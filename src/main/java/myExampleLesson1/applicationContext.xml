@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://www.springframework.org/schema/beans
+	 http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+    <bean id="userRole" class="myExampleLesson1.EngineerRole"/>	
+	<bean id="objectType" class="myExampleLesson1.EngineeringObject"/>
+	<bean id="engineeringObject" class ="myExampleLesson1.EngineeringObject" scope="prototype"/>	
+	
+	<bean id="engineerRole" class="myExampleLesson1.EngineerRole">
+	  <property name="objectTypes">
+	     <list value-type="java.util.List">
+            <ref bean="objectType"/>
+         </list>
+      </property>
+	</bean>
+	
+	 <bean id="user" class="myExampleLesson1.User">
+	   <property name="roles">
+	    <list value-type="java.util.List">
+	     <ref bean="userRole"/>
+	    </list>
+	   </property> 
+	 </bean>
+	 
+	 <bean id="department" class="myExampleLesson1.Department"> 
+	   <property name="users">
+	    <list value-type="java.util.List">
+	     <ref bean="user"/>
+	    </list>
+	   </property> 
+	</bean>  
+	  
+</beans>
